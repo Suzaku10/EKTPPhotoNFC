@@ -86,6 +86,12 @@ public class EktpReaderPlugin implements FlutterPlugin, MethodCallHandler, Activ
     nfc = getDefaultAdapter(activity);
 
     //check if device has nfc or not
+   if(nfc == null) {
+     result.error("404", "this device not support NFC", "this device not support NFC");
+     return;
+   }
+
+
     if (!nfc.isEnabled()) {
       result.error("404", "NFC not available", null);
       return;
